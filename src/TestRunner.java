@@ -9,6 +9,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Created by merrillm on 7/10/16.
  */
@@ -26,7 +28,16 @@ public class TestRunner {
 
     @Test
     public void TestIO() {
-        System.out.println(test(TestIO.class, "Hello World?", "", 5));
+        assertEquals(TestResult.CORRECT_ANSWER,
+                test(TestIO.class,
+                        "Hello World?", "Hello", 5));
+    }
+
+    @Test
+    public void TestSum() {
+        assertEquals(TestResult.CORRECT_ANSWER,
+                test(TestIO.TestSum.class,
+                        "4\n1 2 3 4", "10", 5));
     }
 
     public TestResult test(Class clazz, String input, String output, int allowedTime) {
@@ -48,6 +59,7 @@ public class TestRunner {
                             main.invoke(null, (Object)new String[0]);
                             return true;
                         } catch (Exception e) {
+                            e.printStackTrace();
                             errorThrown.set(true);
                             return false;
                         }

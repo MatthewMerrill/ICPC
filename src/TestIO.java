@@ -1,4 +1,6 @@
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 import static java.lang.System.*;
 
@@ -9,7 +11,24 @@ public class TestIO {
 
     public static void main(String[] args) throws InterruptedException {
         Scanner scn = new Scanner(in);
-        Thread.sleep(300000);
-        out.println(scn.next());
+
+
+
+
+    }
+
+    static class TestSum {
+
+        public static void main(String[] args) {
+            Scanner scn = new Scanner(System.in);
+
+            int[] arr = IntStream
+                    .generate(scn::nextInt)
+                    .limit(scn.nextInt())
+                    .toArray();
+
+            System.out.println(Arrays.stream(arr).sum());
+        }
+
     }
 }
