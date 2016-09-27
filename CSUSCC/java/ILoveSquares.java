@@ -39,7 +39,6 @@ public class ILoveSquares {
         }
         
         System.out.println(list.stream().collect(Collectors.joining("\n")));
-        
     }
     
     public static String rep(char ch, int count) {
